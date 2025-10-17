@@ -1,0 +1,21 @@
+# 1.5: Chuỗi với a trước b trước c, E_n, e1000 mod 999
+# -----------------------------
+MOD = 999
+
+def e_n(n):
+    """
+    Tính e_n mod MOD với recurrence:
+    e1 = 3, e2 = 8
+    e_n = 3*e_{n-1} - e_{n-2} mod MOD
+    """
+    if n == 1:
+        return 3
+    if n == 2:
+        return 8
+    e0, e1 = 3, 8
+    for _ in range(3, n+1):
+        e2 = (3*e1 - e0) % MOD
+        e0, e1 = e1, e2
+    return e1
+
+print("1.5) e1000 mod 999 =", e_n(1000))
