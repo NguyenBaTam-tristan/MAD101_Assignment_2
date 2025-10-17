@@ -1,0 +1,7 @@
+# 1.4: Chuỗi không có hai chữ 'a' liên tiếp, D_n, d1000 mod 9999
+# -----------------------------
+d0, d1 = 1, 3  # D0 = 1, D1 = 3
+for n in range(2, 1001):
+    d2 = (2*d1 + 2*d0) % 9999  # recurrence: d_n = 2*d_{n-1} + 2*d_{n-2} mod 9999
+    d0, d1 = d1, d2
+print("1.4) d1000 mod 9999 =", d1)
