@@ -1,0 +1,15 @@
+# 1.3: Chuỗi có i a, j b, k c, tính c(i,j,k) mod 9999
+# -----------------------------
+import math
+
+def multinomial_mod(i, j, k, mod=9999):
+    """
+    Tính c(i,j,k) = (i+j+k)! / (i!*j!*k!) mod mod
+    """
+    n = i + j + k
+    num = math.factorial(n)
+    denom = math.factorial(i) * math.factorial(j) * math.factorial(k)
+    return (num // denom) % mod
+
+result = multinomial_mod(100, 90, 80)
+print("1.3) c(100,90,80) mod 9999 =", result)
