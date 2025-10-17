@@ -1,0 +1,34 @@
+# 1.2: Chuỗi palindrome P_n, tính b_n = |P_n|, b1000 mod 9999
+# -----------------------------
+def compute_bn(n, mod=9999):
+    """
+    Tính b_n = |P_n| = 3^(ceil(n/2)) mod mod
+    """
+    half_len = (n + 1) // 2  # ceil(n/2)
+    return pow(3, half_len, mod)
+
+b1000_mod = compute_bn(1000)
+print("1.2) b_1000 mod 9999 =", b1000_mod)
+
+# Bonus: tạo tất cả P10 và phần tử thứ 100
+from itertools import product
+
+def generate_P10():
+    """
+    Sinh tất cả palindrome độ dài 10 từ {a,b,c} theo dictionary order
+    """
+    A = ['a', 'b', 'c']
+    n = 10
+    half_len = n // 2
+    palindromes = []
+
+    for first_half in product(A, repeat=half_len):
+        first_half_str = ''.join(first_half)
+        palindrome = first_half_str + first_half_str[::-1]
+        palindromes.append(palindrome)
+    return palindromes
+
+P10 = generate_P10()
+print("1.2) Tổng số phần tử P10:", len(P10))
+print("1.2) Phần tử thứ 100 của P10:", P10[99])
+
