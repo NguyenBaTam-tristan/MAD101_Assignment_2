@@ -1,0 +1,32 @@
+# 1.1: Tất cả chuỗi S_n, tính a_n = |S_n|, a1000 mod 9999
+# -----------------------------
+def compute_a_n_mod(n, mod=9999):
+    """
+    Tính a_n = |S_n| = 3^n mod mod
+    """
+    return pow(3, n, mod)
+
+a1000_mod = compute_a_n_mod(1000)
+print("1.1) a_1000 mod 9999 =", a1000_mod)
+
+# Bonus: in phần tử thứ 100 của S10 theo thứ tự dictionary
+def get_100th_S10():
+    """
+    Trả về phần tử thứ 100 của S10 theo thứ tự dictionary
+    """
+    A = ['a', 'b', 'c']
+    n = 10
+    index = 99  # chỉ số 0-based
+
+    # Chuyển chỉ số sang hệ cơ số 3 với 10 chữ số
+    digits = []
+    temp = index
+    for _ in range(n):
+        digits.append(temp % 3)
+        temp //= 3
+    digits = digits[::-1]
+
+    # Map sang chữ cái
+    return ''.join(A[d] for d in digits)
+
+print("1.1) Phần tử thứ 100 của S10:", get_100th_S10())
